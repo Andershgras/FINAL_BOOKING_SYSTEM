@@ -1,6 +1,4 @@
-﻿using System.Reflection;
-
-namespace Bookingsystem.MockData
+﻿namespace FINALBOOKINGSYSTEM.MockData
 {
     public class MockItems
     {

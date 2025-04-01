@@ -1,7 +1,6 @@
-﻿using Bookingsystem.Models;
-using Bookingsystem.Pages.Items;
+﻿using FINALBOOKINGSYSTEM.Models;
 
-namespace Bookingsystem.Service
+namespace FINALBOOKINGSYSTEM.Service
 {
     public class ItemService : IItemService
     {
@@ -12,6 +11,10 @@ namespace Bookingsystem.Service
         public List<Item> GetItems()
         {
             return MockData.MockItems.GetMockItems();
+        }
+        public void AddItem(Item item)
+        {
+            Items.Add(item);
         }
     }
 }

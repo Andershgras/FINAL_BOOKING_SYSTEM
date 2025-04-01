@@ -1,4 +1,4 @@
-﻿namespace Bookingsystem.Models
+﻿namespace FINALBOOKINGSYSTEM.Models
 {
     public class Item
     {

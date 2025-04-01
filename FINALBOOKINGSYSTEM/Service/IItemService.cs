@@ -1,16 +1,11 @@
-﻿using Bookingsystem.Models;
-using Bookingsystem.Pages.Items;
+﻿using FINALBOOKINGSYSTEM.Models;
 
-namespace Bookingsystem.Service
+namespace FINALBOOKINGSYSTEM.Service
 {
     public interface IItemService
     {
         List<Item> GetItems();
 
-        public void AddItem(Item item)
-        {
-            _items.Add(item);
-        }
-
+        public void AddItem(Item item);
     }
 }

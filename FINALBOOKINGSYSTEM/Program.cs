@@ -1,4 +1,4 @@
-using Bookingsystem.Service;
+using FINALBOOKINGSYSTEM.Service;
 
 var builder = WebApplication.CreateBuilder(args);
 
