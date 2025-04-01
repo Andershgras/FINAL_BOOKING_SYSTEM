@@ -1,0 +1,41 @@
+﻿@page
+@model Bookingsystem.Pages.Items.GetAllItemsModel
+@{
+}
+
+<h1>Lokale Oversigt</h1>
+
+<table class="table table-bordered table-hover table-striped">
+	<thead>
+		<tr>
+			<th>
+				Id
+			</th>
+			<th>
+				Navn
+			</th>
+			<th>
+				IsBooked
+			</th>
+		</tr>
+	</thead>
+	<tbody>
+		@if (Model.Items != null)
+		{
+			foreach (var item in Model.Items)
+			{
+				<tr>
+					<td>
+						@item.Id
+					</td>
+					<td>
+						@item.Name
+					</td>
+					<td>
+						@item.IsBooked
+					</td>
+				</tr>
+			}
+		}
+	</tbody>
+</table>

@@ -1,7 +1,10 @@
+using Bookingsystem.Service;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+builder.Services.AddSingleton<ItemService, ItemService>(); //ItemService skal registreres før den kan anvendes af razor pages
 
 var app = builder.Build();
 
