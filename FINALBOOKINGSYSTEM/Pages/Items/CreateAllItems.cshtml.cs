@@ -26,7 +26,7 @@ namespace FINALBOOKINGSYSTEM.Pages.Items
             }
 
             _itemService.AddItem(Item);
-            return RedirectToPage("GetAllItems");
+            return RedirectToPage("CreateAllItems");
         }
     }
 }
