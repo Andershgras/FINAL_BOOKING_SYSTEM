@@ -41,5 +41,43 @@ namespace FINALBOOKINGSYSTEM.Service
             }
             return filterList;
         }
+        public void UpdateItem(Item item)
+        {
+            if(item != null)
+            {
+                foreach (Item i in Items)
+                {
+                    if (i.Id == item.Id)
+                    {
+                        i.Name = item.Name;
+                        i.Id = item.Id;
+                    }
+                }
+            }
+        }
+        public Item GetItem(int id)
+        {
+            foreach (Item item in Items)
+            {
+                if(item.Id == id)
+                {
+                    return item;
+                }
+            }
+            return null;
+        }
+        public Item DeleteItem(int? itemId)
+        {
+            foreach (Item item in Items)
+            {
+                if (item.Id == itemId)
+                {
+                    Items.Remove(item);
+                    return item;
+                }
+            }
+            return null;
+        }
     }
+
 }
