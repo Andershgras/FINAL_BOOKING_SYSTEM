@@ -10,6 +10,10 @@ namespace FINALBOOKINGSYSTEM.Service
         public void AddItem(Item item);
         public Item GetItem(int id);
         public Item DeleteItem(int? itemId);
+        public Item BookItem(int? itemId);
+
+        public void SwitchBookStatus(int id);
+        public void SwitchWhiteBoardStatus(int id);
 
         IEnumerable<Item> NameSearch(string str);
 

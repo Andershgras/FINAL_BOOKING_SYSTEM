@@ -29,12 +29,12 @@ namespace FINALBOOKINGSYSTEM.Service
             }
             return nameSearch;
         }
-        public IEnumerable<Item> IdFilter(int maxId, int minId = 0)
+        public IEnumerable<Item> IdFilter(int maxKapacitet, int minKapacitet = 0)
         {
             List<Item> filterList = new List<Item>();
             foreach (Item item in Items)
             { //hvorfor minId == 0?
-                if ((minId == 0 && item.Id <= maxId) || (maxId == 0 && item.Id >= minId) || (item.Id >= minId && item.Id <= maxId))
+                if ((minKapacitet == 0 && item.Kapacitet <= maxKapacitet) || (maxKapacitet == 0 && item.Kapacitet >= minKapacitet) || (item.Kapacitet >= minKapacitet && item.Kapacitet <= maxKapacitet))
                 {
                     filterList.Add(item);
                 }
@@ -51,6 +51,10 @@ namespace FINALBOOKINGSYSTEM.Service
                     {
                         i.Name = item.Name;
                         i.Id = item.Id;
+                        i.Kapacitet = item.Kapacitet;
+                        i.Kommentar = item.Kommentar;
+                        i.IsBooked = item.IsBooked;
+                        i.HasWhiteBoard = item.HasWhiteBoard;
                     }
                 }
             }
@@ -77,6 +81,33 @@ namespace FINALBOOKINGSYSTEM.Service
                 }
             }
             return null;
+        }
+        public Item BookItem(int? itemId)
+        {
+            foreach (Item item in Items)
+            {
+                if (item.Id == itemId)
+                {
+                    return item;
+                }
+            }
+            return null;
+        }
+        public void SwitchBookStatus(int id)
+        {
+            var item = GetItem(id);
+            if (item != null)
+            {
+                item.IsBooked = !item.IsBooked;
+            }
+        }
+        public void SwitchWhiteBoardStatus(int id)
+        {
+            var item = GetItem(id);
+            if (item != null)
+            {
+                item.HasWhiteBoard = !item.HasWhiteBoard;
+            }
         }
     }
 

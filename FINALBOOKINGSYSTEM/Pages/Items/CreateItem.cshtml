@@ -18,6 +18,16 @@
 		<input asp-for="Item.IsBooked" class="form-control" />
 		<span asp-validation-for="Item.IsBooked" class="text-danger"></span>
 	</div> *@
+	<div glass="form-group">
+		<label asp-for="Item.Kapacitet" class="control-lable"></label>
+		<input asp-for="Item.Kapacitet" class="form-control" />
+		<span asp-validation-for="Item.Kapacitet" class="text-danger"></span>
+	</div>
+	<div glass="form-group">
+		<label asp-for="Item.Kommentar" class="control-lable"></label>
+		<input asp-for="Item.Kommentar" class="form-control" />
+		<span asp-validation-for="Item.Kommentar" class="text-danger"></span>
+	</div>
 
 	<div class="form-group">
 		<input type="submit" value="Create" class="btn btn-primary" />

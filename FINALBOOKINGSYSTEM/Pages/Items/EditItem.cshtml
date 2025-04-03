@@ -13,6 +13,32 @@
 		<span asp-validation-for="Item.Name" class="text-danger"></span>
 	</div>
 	<div class="form-group">
+		<label asp-for="Item.Kapacitet" class="control-lable"></label>
+		<input asp-for="Item.Kapacitet" class="form-control" />
+		<span asp-validation-for="Item.Kapacitet" class="text-danger"></span>
+	</div>
+	<div class="form-group">
+		<label asp-for="Item.Kommentar" class="control-lable"></label>
+		<input asp-for="Item.Kommentar" class="form-control" />
+		<span asp-validation-for="Item.Kommentar" class="text-danger"></span>
+	</div>
+	<div class="alert alert-warning">
+		<h5>Vil du gerne afmelde booking af lokale?</h5>
+		<form method="post" asp-page-handler="SwitchBookStatus">
+			<input type="hidden" asp-for="Item.Id" /> <!-- So the ID is posted -->
+			<button type="submit" class="btn btn-danger">Yes</button>
+@* 			<a class="btn btn-primary" asp-page="CreateAllItems">No</a>
+ *@		</form>
+	</div>
+	<div class="alert alert-warning">
+		<h5>Vil du ændre whiteboard status? Den er nu @Model.Item.HasWhiteBoard</h5>
+		<form method="post" asp-page-handler="SwitchWhiteBoardStatus">
+			<input type="hidden" asp-for="Item.Id" /> <!-- So the ID is posted -->
+			<button type="submit" class="btn btn-danger">Yes</button>
+@* 			<a class="btn btn-primary" asp-page="CreateAllItems">No</a>
+ *@		</form>
+	</div>
+	<div class="form-group">
 		<input type="submit" value="Update" class="btn btn-primary" />
 	</div>
 </form>

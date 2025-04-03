@@ -35,6 +35,10 @@ namespace FINALBOOKINGSYSTEM.Pages.Items
             {
                 // Assign a new Id if it's a new item
                 Item.Id = _itemService.GetItems().Max(i => i.Id) + 1 ?? 1;
+                Item.Kapacitet = _itemService.GetItems().Max(i => i.Kapacitet) + 1 ?? 1;
+                Item.Kommentar = _itemService.GetItems().ToString();
+                Item.IsBooked = _itemService.GetItems().Any(i => i.IsBooked);
+                Item.HasWhiteBoard = _itemService.GetItems().Any(i => i.HasWhiteBoard);
                 _itemService.AddItem(Item);
             }
             else
@@ -44,6 +48,16 @@ namespace FINALBOOKINGSYSTEM.Pages.Items
 
             return RedirectToPage("CreateAllItems");
             _itemService.UpdateItem(Item);
+        }
+        public IActionResult OnPostSwitchBookStatus()
+        {
+            _itemService.SwitchBookStatus((int)Item.Id); // You may need to pass ID depending on your design
+            return RedirectToPage("CreateAllItems");
+        }
+        public IActionResult OnPostSwitchWhiteBoardStatus()
+        {
+            _itemService.SwitchWhiteBoardStatus((int)Item.Id); // You may need to pass ID depending on your design
+            return RedirectToPage("CreateAllItems");
         }
     }
 }

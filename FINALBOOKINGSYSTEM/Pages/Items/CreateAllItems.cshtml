@@ -13,11 +13,11 @@
 <form method="post" class="form-inline">
 	<div class="input-group mb-3">
 		<div class="input-group-prepend">
-			<span class="input-group-text">Min</span>
+			<span class="input-group-text">Min Kapacitet</span>
 		</div>
 		<input asp-for="MinId" class="form-control mr-1" />
 		<div class="input-group-preprend">
-			<span class="input-group-text">Max</span>
+			<span class="input-group-text">Max Kapacitet</span>
 		</div>
 		<input asp-for="MaxId" class="form-control mr-1" />
 		<input type="submit" asp-page-handler="IdFilter" value="Filter" class="btn btn-primary" />
@@ -34,7 +34,16 @@
 				Navn
 			</th>
 			<th>
+				Kapacitet
+			</th>
+			<th>
 				IsBooked
+			</th>
+			<th>
+				HasWhiteBoard
+			</th>
+			<th>
+				Kommentar
 			</th>
 		</tr>
 	</thead>
@@ -50,10 +59,20 @@
 					<td>
 						@item.Name
 					</td>
-@* 					<td>
-						@item.IsBooked
-					</td> *@
 					<td>
+						@item.Kapacitet
+					</td>
+					<td>
+						@item.IsBooked
+					</td>
+					<td>
+						@item.HasWhiteBoard
+					</td>
+					<td>
+						@item.Kommentar
+					</td>
+					<td>
+						<a class="btn btn-secondary btn-sm" type="button" title="Edit" asp-page="BookItem" asp-route-id="@item.Id">Book</a>
 						<a class="btn btn-primary btn-sm" type="button" title="Edit" asp-page="EditItem" asp-route-id="@item.Id">Edit</a>
 						<a class="btn btn-danger btn-sm " type="button" title="Delete" asp-page="DeleteItem" asp-route-id="@item.Id">Delete</a>
 					</td>
