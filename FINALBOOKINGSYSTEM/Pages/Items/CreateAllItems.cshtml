@@ -23,6 +23,15 @@
 		<input type="submit" asp-page-handler="IdFilter" value="Filter" class="btn btn-primary" />
 	</div>
 </form>
+<form method="post" asp-page-handler="OnPostWhiteBoardFilter">
+	<div class="form-check">
+		<input asp-for="HasWhiteBoard" class="form-check-input" id="HasWhiteBoard" />
+		<label class="form-check-label" for="HasWhiteBoard">
+			Vis kun lokaler med whiteboard
+		</label>
+	</div>
+	<button type="submit" class="btn btn-primary">Filtrér</button>
+</form>
 
 <table class="table table-bordered table-hover table-striped">
 	<thead>

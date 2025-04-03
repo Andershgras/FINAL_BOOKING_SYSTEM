@@ -10,6 +10,9 @@ namespace FINALBOOKINGSYSTEM.Pages.Items
 
         [BindProperty] public int MaxId { get; set; }
         [BindProperty] public int MinId { get; set; }
+        
+        [BindProperty]
+        public bool HasWhiteBoard { get; set; }
 
         public ItemService _itemService; //Instancefield
         public List<Models.Item> Items { get; set; }
