@@ -32,6 +32,12 @@ namespace FINALBOOKINGSYSTEM.Models
         [Required(ErrorMessage = "Kapacitet is required")]
         public string Kommentar { get; set; }
 
+        [Display(Name = "Booking Date")]
+        public DateTime? BookingDate { get; set; }
+
+        [Display(Name = "Booking Time")]
+        public TimeSpan? BookingTime { get; set; }
+
         public Item(int id, string name, int kapacitet)
         {
             this.Id = id;
@@ -40,6 +46,8 @@ namespace FINALBOOKINGSYSTEM.Models
             this.IsBooked = false;
             this.HasWhiteBoard = false;
             this.Kommentar = string.Empty;
+            this.BookingDate = null;
+            this.BookingTime = null;
         }
         public Item()
         {
@@ -49,6 +57,8 @@ namespace FINALBOOKINGSYSTEM.Models
             this.IsBooked = false;
             this.HasWhiteBoard = false;
             this.Kommentar = string.Empty;
+            this.BookingDate = null;
+            this.BookingTime = null;
         }
     }
 }

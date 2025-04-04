@@ -1,4 +1,5 @@
 ﻿using FINALBOOKINGSYSTEM.Models;
+using FINALBOOKINGSYSTEM.Pages.Items;
 
 namespace FINALBOOKINGSYSTEM.Service
 {
@@ -10,7 +11,8 @@ namespace FINALBOOKINGSYSTEM.Service
         //Constructor initialisere Items med Mock-Data
         public List<Item> GetItems()
         {
-            return MockData.MockItems.GetMockItems();
+            return Items;
+            //return MockData.MockItems.GetMockItems();
         }
         public void AddItem(Item item)
         {
@@ -41,34 +43,60 @@ namespace FINALBOOKINGSYSTEM.Service
             }
             return filterList;
         }
-        public void UpdateItem(Item item)
+        public IEnumerable<Item> WhiteBoardFilter(bool? hasWhiteBoard)
         {
-            if(item != null)
+            List<Item> itemsHasWhiteBoard = new List<Item>();
+            foreach (Item item in Items)
             {
-                foreach (Item i in Items)
+                if (item.HasWhiteBoard == true)
                 {
-                    if (i.Id == item.Id)
-                    {
-                        i.Name = item.Name;
-                        i.Id = item.Id;
-                        i.Kapacitet = item.Kapacitet;
-                        i.Kommentar = item.Kommentar;
-                        i.IsBooked = item.IsBooked;
-                        i.HasWhiteBoard = item.HasWhiteBoard;
-                    }
+                    itemsHasWhiteBoard.Add(item);
                 }
             }
+            return itemsHasWhiteBoard;
+        }
+        public void UpdateItem(Item item)
+        {
+            var existingItem = Items.FirstOrDefault(i => i.Id == item.Id);
+            if (existingItem != null)
+            {
+                existingItem.Name = item.Name;
+                existingItem.Kapacitet = item.Kapacitet;
+                existingItem.IsBooked = item.IsBooked;
+                existingItem.HasWhiteBoard = item.HasWhiteBoard;
+                existingItem.Kommentar = item.Kommentar;
+                existingItem.BookingDate = item.BookingDate;
+                existingItem.BookingTime = item.BookingTime;
+            }
+            //if(item != null)
+            //{
+            //    foreach (Item i in Items)
+            //    {
+            //        if (i.Id == item.Id)
+            //        {
+            //            i.Name = item.Name;
+            //            i.Id = item.Id;
+            //            i.Kapacitet = item.Kapacitet;
+            //            i.Kommentar = item.Kommentar;
+            //            i.IsBooked = item.IsBooked;
+            //            i.HasWhiteBoard = item.HasWhiteBoard;
+            //            i.BookingDate = item.BookingDate;
+            //            i.BookingTime = item.BookingTime;
+            //        }
+            //    }
+            //}
         }
         public Item GetItem(int id)
         {
-            foreach (Item item in Items)
-            {
-                if(item.Id == id)
-                {
-                    return item;
-                }
-            }
-            return null;
+            return Items.FirstOrDefault(i => i.Id == id);
+            //foreach (Item item in Items)
+            //{
+            //    if(item.Id == id)
+            //    {
+            //        return item;
+            //    }
+            //}
+            //return null;
         }
         public Item DeleteItem(int? itemId)
         {
@@ -84,23 +112,37 @@ namespace FINALBOOKINGSYSTEM.Service
         }
         public Item BookItem(int? itemId)
         {
-            foreach (Item item in Items)
+            var item = Items.FirstOrDefault(i => i.Id == itemId);
+            if (item != null)
             {
-                if (item.Id == itemId)
-                {
-                    return item;
-                }
+                item.IsBooked = true;
             }
-            return null;
+            return item;
+            //foreach (Item item in Items)
+            //{
+            //    if (item.Id == itemId)
+            //    {
+            //        return item;
+            //    }
+            //}
+            //return null;
         }
         public void SwitchBookStatus(int id)
         {
-            var item = GetItem(id);
+            var item = Items.FirstOrDefault(i => i.Id == id);
             if (item != null)
             {
                 item.IsBooked = !item.IsBooked;
             }
         }
+        //public void SwitchBookStatus(int id)
+        //{
+        //    var item = GetItem(id);
+        //    if (item != null)
+        //    {
+        //        item.IsBooked = !item.IsBooked;
+        //    }
+        //}
         public void SwitchWhiteBoardStatus(int id)
         {
             var item = GetItem(id);

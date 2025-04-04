@@ -1,3 +1,4 @@
+using FINALBOOKINGSYSTEM.Models;
 using FINALBOOKINGSYSTEM.Service;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -6,14 +7,15 @@ namespace FINALBOOKINGSYSTEM.Pages.Items
 {
     public class BookItemModel : PageModel
     {
-        private ItemService _itemService;
+        private readonly ItemService _itemService;
 
-        [BindProperty]
-        public Models.Item Item { get; set; }
         public BookItemModel(ItemService itemService)
         {
             _itemService = itemService;
         }
+        [BindProperty]
+        public Item Item { get; set; }
+
         public IActionResult OnGet(int id)
         {
             Item = _itemService.GetItem(id);
@@ -25,13 +27,22 @@ namespace FINALBOOKINGSYSTEM.Pages.Items
         }
         public IActionResult OnPost()
         {
-            Models.Item bookedItem = _itemService.BookItem(Item.Id);
-            if (bookedItem == null)
+            if (!ModelState.IsValid)
             {
-                return RedirectToPage("/NotFound");
+                return Page();
             }
-            bookedItem.IsBooked = true;
-            return RedirectToPage("CreateAllItems");
+
+            var item = _itemService.GetItem(Item.Id.Value);
+            if (item != null)
+            {
+                item.IsBooked = true;
+                item.BookingDate = Item.BookingDate;
+                item.BookingTime = Item.BookingTime;
+                item.Kommentar = Item.Kommentar;
+                _itemService.UpdateItem(item);
+            }
+
+            return RedirectToPage("/Items/CreateAllItems");
         }
     }
 }

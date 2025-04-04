@@ -11,6 +11,7 @@ namespace FINALBOOKINGSYSTEM.Service
         public Item GetItem(int id);
         public Item DeleteItem(int? itemId);
         public Item BookItem(int? itemId);
+        public IEnumerable<Item> WhiteBoardFilter(bool? hasWhiteBoard);
 
         public void SwitchBookStatus(int id);
         public void SwitchWhiteBoardStatus(int id);

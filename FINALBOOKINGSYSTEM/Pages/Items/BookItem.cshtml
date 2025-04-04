@@ -1,12 +1,31 @@
-﻿@page
+﻿@page "{id:int}"
 @model FINALBOOKINGSYSTEM.Pages.Items.BookItemModel
 @{
 }
-<h1>Booking Confirmation</h1>
-<div class="alert alert-danger">
-	<h5>Are you sure you want to book Item - @Model.Item.Name</h5>
-	<form method="post">
-		<button type="submit" class="btn btn-danger">Yes</button>
-		<a class="btn btn-primary" asp-page="/Item/GetAllItems">No</a>
-	</form>
-</div>
+
+<h1>Book Lokale</h1>
+
+<form method="post">
+    <input type="hidden" asp-for="Item.Id" />
+    <div class="form-group">
+        <label asp-for="Item.Name" class="control-label"></label>
+        <input asp-for="Item.Name" class="form-control" readonly />
+    </div>
+    <div class="form-group">
+        <label asp-for="Item.Kapacitet" class="control-label"></label>
+        <input asp-for="Item.Kapacitet" class="form-control" readonly />
+    </div>
+    <div class="form-group">
+        <label asp-for="Item.BookingDate" class="control-label"></label>
+        <input asp-for="Item.BookingDate" class="form-control" type="date" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Item.BookingTime" class="control-label"></label>
+        <input asp-for="Item.BookingTime" class="form-control" type="time" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Item.Kommentar" class="control-label"></label>
+        <textarea asp-for="Item.Kommentar" class="form-control"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary" asp-page="/MineBookings" >Book</button>
+</form>
