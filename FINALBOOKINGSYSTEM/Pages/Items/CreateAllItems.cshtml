@@ -56,7 +56,27 @@
 					<td>@item.Id</td>
 					<td>@item.Name</td>
 					<td>@item.Kapacitet</td>
-					<td>@item.IsBooked</td>
+					<td>
+						@if (item.IsBooked)
+						{
+							<span class="text-danger">Booked</span>
+						}
+						else
+						{
+							<span class="text-success">Available</span>
+						}
+					</td>
+					<td>
+						@if (item.HasWhiteBoard)
+						{
+							<span class="text-success">Yes</span>
+
+						}
+						else
+						{
+							<span class="text-danger">No</span>
+						}
+					</td>
 					<td>@item.HasWhiteBoard</td>
 					<td>@item.Kommentar</td>
 					<td>@item.BookingDate</td>

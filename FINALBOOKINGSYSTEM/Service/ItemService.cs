@@ -6,7 +6,8 @@ namespace FINALBOOKINGSYSTEM.Service
     public class ItemService : IItemService
     {
         //Properties der refererer til MockItems
-        List<Item> Items { get; set; } = MockData.MockItems.GetMockItems().ToList();
+        //List<Item> Items { get; set; } = MockData.MockItems.GetMockItems().ToList();
+        List<Item> Items { get; set; } = MockData.MockItems.GetMockItems();
 
         //Constructor initialisere Items med Mock-Data
         public List<Item> GetItems()
@@ -60,6 +61,8 @@ namespace FINALBOOKINGSYSTEM.Service
             var existingItem = Items.FirstOrDefault(i => i.Id == item.Id);
             if (existingItem != null)
             {
+                Console.WriteLine($"Updating item {existingItem.Id}: setting IsBooked = {item.IsBooked}");
+
                 existingItem.Name = item.Name;
                 existingItem.Kapacitet = item.Kapacitet;
                 existingItem.IsBooked = item.IsBooked;
@@ -67,6 +70,10 @@ namespace FINALBOOKINGSYSTEM.Service
                 existingItem.Kommentar = item.Kommentar;
                 existingItem.BookingDate = item.BookingDate;
                 existingItem.BookingTime = item.BookingTime;
+            }
+            else
+            {
+                Console.WriteLine("UpdateItem: Item NOT found in list");
             }
             //if(item != null)
             //{

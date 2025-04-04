@@ -7,6 +7,7 @@
 
 <form method="post">
     <input type="hidden" asp-for="Item.Id" />
+
     <div class="form-group">
         <label asp-for="Item.Name" class="control-label"></label>
         <input asp-for="Item.Name" class="form-control" readonly />
@@ -27,5 +28,5 @@
         <label asp-for="Item.Kommentar" class="control-label"></label>
         <textarea asp-for="Item.Kommentar" class="form-control"></textarea>
     </div>
-    <button type="submit" class="btn btn-primary" asp-page="/MineBookings" >Book</button>
+    <button type="submit" class="btn btn-primary" >Book</button>
 </form>
