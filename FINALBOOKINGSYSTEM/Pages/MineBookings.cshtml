@@ -13,6 +13,8 @@
 			<th>IsBooked</th>
 			<th>HasWhiteBoard</th>
 			<th>Kommentar</th>
+			<th>Booking Dato</th>
+			<th>Booking Time</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -27,9 +29,8 @@
 					<td>@item.IsBooked</td>
 					<td>@item.HasWhiteBoard</td>
 					<td>@item.Kommentar</td>
-					<td>
-						<a class="btn btn-secondary btn-sm" type="button" title="Book" asp-page="/Items/BookItem" asp-route-id="@item.Id">Book</a>
-					</td>
+					<td>@item.BookingTime</td>
+					<td>@item.BookingDate</td>
 				</tr>
 			}
 		}
