@@ -51,12 +51,12 @@ namespace FINALBOOKINGSYSTEM.Pages.Items
         }
         public IActionResult OnPostSwitchBookStatus()
         {
-            _itemService.SwitchBookStatus((int)Item.Id); // You may need to pass ID depending on your design
+            _itemService.SwitchBookStatus((int)Item.Id);
             return RedirectToPage("CreateAllItems");
         }
         public IActionResult OnPostSwitchWhiteBoardStatus()
         {
-            _itemService.SwitchWhiteBoardStatus((int)Item.Id); // You may need to pass ID depending on your design
+            _itemService.SwitchWhiteBoardStatus((int)Item.Id); 
             return RedirectToPage("CreateAllItems");
         }
     }

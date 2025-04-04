@@ -32,7 +32,6 @@ namespace FINALBOOKINGSYSTEM.Models
         [Required(ErrorMessage = "Kapacitet is required")]
         public string Kommentar { get; set; }
 
-
         public Item(int id, string name, int kapacitet)
         {
             this.Id = id;
